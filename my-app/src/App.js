@@ -8,6 +8,7 @@ function App() {
   // ----------- bad practice
   const [array, setArray] = useState([]);
   const [obj,setObj] =useState({});
+  const [state,setState] = useState({array: [], obj:{}});
 
   // const addNumberToArray = () => {
   //   array.push(i);
@@ -19,28 +20,35 @@ function App() {
 
   const addNumberToArray = () => {
     // first make a copy and add the new element
-    const arrayCopy = [...array, i];
-    i++;
-    console.log(i);
-    setArray(arrayCopy);
+    // const arrayCopy = [...array, i];
+    // i++;
+    // console.log(i);
+    // setArray(arrayCopy);
     // ...array to copy the original one, and
+    const arrayCopy = [...state.array, i]; 
+    i++; 
+    setState({...state, array: arrayCopy})
   };
 
   const addItemToCarts = () => {
     const item = 'toilet paper'; 
-    const objCopy = {...obj}; 
+    // const objCopy = {...obj}; 
+    // objCopy[i] = item; 
+    // i++;
+    // setObj(objCopy);
+    const objCopy = {...state.obj}; 
     objCopy[i] = item; 
-    i++;
-    setObj(objCopy);
+    i++; 
+    setState({...state, obj: objCopy});
   }
   return (
     <div className="App">
-      <h2>{array}</h2>
+      <h2>{state.array}</h2>
       <button onClick={addNumberToArray}>click me to add to array</button>
 
       {/* <h2>{Object.keys(obj)}, {Object.values(obj)}</h2> */}
       {/* JSON.stringify: converts a JavaScript object or value to a JSON string  */}
-      <h2>{JSON.stringify(obj)}</h2>
+      <h2>{JSON.stringify(state.obj)}</h2>
 
     {/* Event listener: onClick */}
       <button onClick={addItemToCarts}>click me to add to cart</button>
