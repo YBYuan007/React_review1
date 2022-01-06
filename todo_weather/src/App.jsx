@@ -12,13 +12,17 @@ import { starterToDos } from './data/starterToDos';
 import './App.css';
 
 function App() {
-  const [toDos, setToDos] = useState(starterToDos);
+  const [todos, setTodos] = useState(starterToDos);
+
+  const updateTodoCompletion = () => {}
+  const deleteTodo = () => {} 
+
   return (
     <div className="App">
       <Header /> 
       <ToDoForm />
-      <ToDoList todos={toDos}/> 
-
+      {todos && <ToDoList {...{todos}}/> }
+{/* ^ is the same as todos = {todos} */}
     </div>
   );
 }
