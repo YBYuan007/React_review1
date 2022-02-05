@@ -1,13 +1,16 @@
 export default function ToDoListItem(props) {
  
-  const {name,isComplete} = {props};
+  const name = props.todo.name; 
+  const isComplete = props.todo.isComplete; 
+  const deleteTodo = props.deleteTodo; 
+  const updateTodoCompletion = props.updateTodoCompletion; 
 
   return (
-    <article className ={props.isComplete ? "complete" : "incomplete"}>
-      <h1> {props.name}</h1>
-      {!props.isComplete && <button> completed </button> }
+    <article className ={isComplete ? "complete" : "incomplete"}>
+      <h1> {name}</h1>
+      {!isComplete && <button onClick = {() =>updateTodoCompletion(props.todo.id) }> completed </button> }
       {/* {!props.isComplete && <button> complete </button>} */}
-      {props.isComplete &&  <button> delete! </button>}
+      {isComplete &&  <button onClick = {()=>deleteTodo(props.todo.id)}> delete! </button>}
 
     </article>
   )

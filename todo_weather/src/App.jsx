@@ -14,15 +14,28 @@ import './App.css';
 function App() {
   const [todos, setTodos] = useState(starterToDos);
 
-  const updateTodoCompletion = () => {}
-  const deleteTodo = () => {} 
+  const updateTodoCompletion = (todoId) => {
+    let newTodos = [...todos]; 
+    let changeIndex = newTodos.findIndex(todo => todo.id === todoId); 
+    let changeTodo = newTodos.find(todo => todo.id === todoId); 
+    changeTodo = {...changeTodo, isComplete: !changeTodo.isComplete};
+    newTodos[changeIndex] = changeTodo;
+    setTodos(newTodos);
+  }
+
+
+  const deleteTodo = (todoId) => {
+    const newTodos = todos.filter(todo => todo.id !== todoId )
+    setTodos(newTodos)
+  } 
 
   return (
     <div className="App">
       <Header /> 
       <ToDoForm />
-      {todos && <ToDoList {...{todos}}/> }
-{/* ^ is the same as todos = {todos} */}
+      {todos && <ToDoList todos = {todos}
+                          deleteTodo = {deleteTodo}
+                          updateTodoCompletion = {updateTodoCompletion} /> }
     </div>
   );
 }

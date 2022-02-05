@@ -33,11 +33,15 @@ article.complete > h1 {
 }
 
 article.complete button {
+  cursor: pointer; 
   background: rgba(255, 0, 0, 0.5);
-  border: 0.2em solid red ;
+  border: 0.2em solid red ; 
 }
 
+
 article.incomplete button {
+  cursor: pointer; 
   background: rgba(0,255,0,0.5);
   border: 0.2em solid green ;
 }
+
