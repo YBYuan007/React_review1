@@ -11,6 +11,7 @@ export default function ToDoListItem(props) {
       {!isComplete && <button onClick = {() =>updateTodoCompletion(props.todo.id) }> completed </button> }
       {/* {!props.isComplete && <button> complete </button>} */}
       {isComplete &&  <button onClick = {()=>deleteTodo(props.todo.id)}> delete! </button>}
+      {isComplete &&  <button onClick = {()=>updateTodoCompletion(props.todo.id)}> incompleted! </button>}
 
     </article>
   )

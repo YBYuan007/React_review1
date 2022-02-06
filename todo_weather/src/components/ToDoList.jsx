@@ -9,7 +9,7 @@ export default function ToDoList (props) {
   const parsedTodos = Array.isArray(todos) && todos.map(todo => <ToDoListItem 
                                                                     todo={todo}
                                                                 key = {todo.id} 
-                                                                // updateTodoCompletion = {updateTodoCompletion(todo.id)}
+                                
                                                                 deleteTodo= {deleteTodo}
                                                                 updateTodoCompletion= {updateTodoCompletion}
                                                                 /> ) 
