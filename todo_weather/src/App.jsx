@@ -1,5 +1,5 @@
-import { useState } from "react";
-import axios from 'axios'; 
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import Header from "./components/Header";
 import ToDoForm from "./components/ToDoForm";
@@ -11,12 +11,18 @@ import { starterToDos } from "./data/starterToDos";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState(starterToDos);
+  const [todos, setTodos] = useState([]);
+
+  useEffect = (() => {
+    axios
+    .get("/api/todos")
+    .then((res) => {setTodos(Object.values(res.data))} )
+  },[])
 
   const addTodo = function (formData) {
     let newTodo = {
       id: uuidv4(), // randomly generate
-      name: formData.name, // event.target.value()
+      name: formData.name,
       isComplete: false,
     };
 
