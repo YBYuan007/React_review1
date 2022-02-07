@@ -12,12 +12,15 @@ import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  console.log("rendering??????")
 
-  useEffect = (() => {
+  useEffect(() => {
     axios
     .get("/api/todos")
     .then((res) => {setTodos(Object.values(res.data))} )
+    // .then(()=> console.log("++++++++++"));
   },[])
+
 
   const addTodo = function (formData) {
     let newTodo = {

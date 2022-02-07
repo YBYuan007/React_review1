@@ -38,10 +38,11 @@ const todos = {
 
 
 app.get("/api/todos", (req, res) => { // show to the public
+  console.log("backend /api/todos")
   res.json(todos); 
 }); 
 
-app.put("/api/todos/todo_id", (req, res) => { // client request to update 
+app.put("/api/todos/:todo_id", (req, res) => { // client request to update 
   const todo_id = req.params; 
   const todo = req.body; 
   todos[todo_id] = todo ; 
@@ -54,11 +55,12 @@ app.post("/api/todos", (req, res) => { // client ask to create a new one
   res.json(todos); 
 }); 
 
-app.delete("/api/todos/todo_id", (req, res) => {
+app.delete("/api/todos/:todo_id", (req, res) => {
   const todo_id = req.params; 
-  delete todos[todo_id]; 
+  delete todos[todo_id]; // javascript applies to the object... 
   res.json(todos);
 })
 
 
 module.exports = app;
+
