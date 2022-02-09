@@ -38,7 +38,7 @@ const todos = {
 
 
 app.get("/api/todos", (req, res) => { // show to the public
-  console.log("backend /api/todos")
+  // console.log("backend /api/todos")
   res.json(todos); 
 }); 
 
@@ -46,6 +46,7 @@ app.put("/api/todos/:todo_id", (req, res) => { // client request to update
   const todo_id = req.params; 
   const todo = req.body; 
   todos[todo_id] = todo ; 
+  console.log('from backend:', todos )
   res.json(todos);
 }); 
 

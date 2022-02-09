@@ -45,6 +45,9 @@ function App() {
     changeTodo = { ...changeTodo, isComplete: !changeTodo.isComplete };
     newTodos[changeIndex] = changeTodo;
     setTodos(newTodos);
+
+    axios.put(`/api/todos/${todoId}`, changeTodo)
+    .then(()=> {console.log("update todo: ", newTodos)})
   };
 
   const deleteTodo = (todoId) => {
