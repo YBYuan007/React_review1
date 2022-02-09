@@ -43,10 +43,11 @@ app.get("/api/todos", (req, res) => { // show to the public
 }); 
 
 app.put("/api/todos/:todo_id", (req, res) => { // client request to update 
-  const todo_id = req.params; 
+  const todo_id = req.params.todo_id; 
+  console.log('from backend - tod_id:', todo_id);
   const todo = req.body; 
   todos[todo_id] = todo ; 
-  console.log('from backend:', todos )
+  console.log('from backend - update:', todos);
   res.json(todos);
 }); 
 
@@ -57,8 +58,10 @@ app.post("/api/todos", (req, res) => { // client ask to create a new one
 }); 
 
 app.delete("/api/todos/:todo_id", (req, res) => {
-  const todo_id = req.params; 
+  const todo_id = req.params.todo_id; 
+  console.log("from backend - delete: ", todo_id);
   delete todos[todo_id]; // javascript applies to the object... 
+  console.log("from backend - delete: ", todos);
   res.json(todos);
 })
 

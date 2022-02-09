@@ -53,6 +53,9 @@ function App() {
   const deleteTodo = (todoId) => {
     const newTodos = todos.filter((todo) => todo.id !== todoId);
     setTodos(newTodos);
+
+    axios.delete(`/api/todos/${todoId}`)
+    .then(()=> {console.log("delete:  ", todoId)})
   };
 
   return (
