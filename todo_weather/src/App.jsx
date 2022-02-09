@@ -33,6 +33,9 @@ function App() {
 
     console.log(newTodos);
     setTodos(newTodos);
+    axios.post("/api/todos", newTodo)
+    .then(()=> {console.log("post newTodo: ", newTodo)})
+
   };
 
   const updateTodoCompletion = (todoId) => {
